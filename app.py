@@ -1388,6 +1388,8 @@ app.layout = dbc.Container([
     # Header com imagens e título
     dbc.Row(dbc.Col(dbc.Card([
         dbc.CardBody(dbc.Row([            
+            dbc.Col(html.Img(src='/assets/img/logoFundoBranco.jpeg', className="img-fluid",
+                             style={'maxWidth': '150px', 'height': 'auto'}), xs=12, sm=6, md=3, className="p-2"),                        
             dbc.Col(html.Img(src='/assets/img/imb720.png', className="img-fluid",
                              style={'maxWidth': '150px', 'height': 'auto'}), xs=12, sm=6, md=3, className="p-2"),
             dbc.Col(html.H1('Instituto Mauro Borges - ODS - Agenda 2030', className="align-middle",
