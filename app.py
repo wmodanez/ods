@@ -22,7 +22,6 @@ from functools import lru_cache
 from cache_manager import cache_manager, load_dados_indicador_cached, preload_related_indicators
 from flask import session, redirect, send_from_directory, request, jsonify
 import bcrypt
-from generate_password import generate_password_hash, generate_secret_key, update_env_file, check_password
 from flask_cors import CORS
 import constants 
 import logging

@@ -58,8 +58,8 @@ LIST_INDICADORES = {
             'Indicador 4.2.1.3': '/t/4734/n3/11,21,17,51,52,53,50/v/4775,4796/p/all/c2/all/d/v4796%201'
         },
         'Meta 4.5': {
-            'Indicador 4.5.1a': '/t/4735/n3/all/v/all/p/all/c582/all/c1712/all/d/v4826%202,v4940%201',
-            'Indicador 4.5.1b': '/t/4736/n3/all/v/all/p/all/c1712/all/d/v4941%202,v4956%201',
+            'Indicador 4.5.1a': '/t/4735/n3/11,21,17,51,52,53,50/v/all/p/all/c582/all/c1712/all/d/v4826%202,v4940%201',
+            'Indicador 4.5.1b': '/t/4736/n3/11,21,17,51,52,53,50/v/all/p/all/c1712/all/d/v4941%202,v4956%201',
         },
         'Meta 4.6': {
             'Indicador 4.6.1': '/t/10436/n3/11,21,17,51,52,53,50/v/2513/p/all/c58/all/d/v2513%202'
@@ -68,7 +68,7 @@ LIST_INDICADORES = {
             'Indicador 4.a.1': '/t/7783/n3/11,21,17,51,52,53,50/v/all/p/last%205/c812/all/d/v11084%201,v11085%201,v11086%201'
         },
         'Meta 4.c': {
-            'Indicador 4.c.1': '/t/6676/n3/all/v/all/p/all/c2/all/c813/all/d/v9610%201'
+            'Indicador 4.c.1': '/t/6676/n3/11,21,17,51,52,53,50/v/all/p/all/c2/all/c813/all/d/v9610%201'
         }
     },
     'Objetivo 5': {
@@ -173,7 +173,7 @@ LIST_INDICADORES = {
     },
     'Objetivo 17': {
         'Meta 17.19.2': {
-            'Indicador 17.19.2': '/t/10389/n3/all/v/13430/p/all/d/v13430%202'
+            'Indicador 17.19.2': '/t/10389/n3/11,21,17,51,52,53,50/v/13430/p/all/d/v13430%202'
         }
     }
 }
