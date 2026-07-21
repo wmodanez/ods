@@ -3,9 +3,15 @@ CODG_VAR;DESC_VAR
 353;Percentual de crianças com menos de 5 anos de idade que tinham registro civil de nascimento
 373;Coeficiente de variação - Percentual de crianças com menos de 5 anos de idade que tinham registro civil de nascimento
 603;Número de municípios
+606;População
+2513;Taxa de alfabetização das pessoas de 15 anos ou mais de idade
 4721;Taxa de conclusão de nível de ensino
 4775;Pessoas de 5 anos de idade que frequentam a escola
 4796;Percentual de pessoas de 5 anos de idade que frequentam a escola
+4826;Índice de paridade da taxa de conclusão de nível de ensino
+4940;Coeficiente de variação - Índice de paridade da taxa de conclusão de nível de ensino
+4941;Índice de paridade da taxa de participação das pessoas de 5 anos de idade no ensino organizado
+4956;Coeficiente de variação - Índice de paridade da taxa de participação das pessoas de 5 anos de idade no ensino organizado
 8828;Rendimento médio por hora real das pessoas de 15 anos ou mais de idade ocupadas na semana de referência com rendimento de trabalho, habitualmente recebido em todos os trabalhos
 8840;Percentual de pessoas de 15 a 24 anos não ocupadas, não estudantes e que não estão em treinamento para um trabalho
 8883;Taxa de informalidade das pessoas de 15 anos ou mais de idade ocupadas na semana de referência
@@ -14,22 +20,21 @@ CODG_VAR;DESC_VAR
 9313;Valor adicionado da indústria de transformação per capita
 9314;Emprego na indústria em proporção do emprego total
 9315;Proporção do valor adicionado nas indústrias de média e alta intensidade tecnológica no valor adicionado total
-9431;Número de nascimentos assistidos por pessoal de saúde qualificado (TPNASCASSI)
+9326;Proporção de população urbana vivendo em assentamentos precários, assentamentos informais ou domicílios inadequados
+9431;Número de nascidos vivos, de partos assistidos por médica (o), enfermeira (o)/obstetriz, parteira, de mulheres de 15 a 49 anos (TPNASCASSI)
 9432;Número total de nascidos vivos de mulheres de 15 a 49 anos
 9433;Número de nascidos vivos de mães adolescentes
 9435;Número de óbitos de mulheres residentes por causas e condições consideradas de morte materna
 9436;Número de nascidos vivos de mães residentes
-9461;Número de óbitos de residentes com menos de cinco anos de idade
 9462;Número de óbitos de residentes até 27 dias de vida completos
 9471;Percentual de tempo gasto em trabalho doméstico não remunerado e cuidados
 9484;Percentual da população que utiliza serviços de água potável gerenciados de forma segura
-9502;Número de vítimas de homicídios intencionais por 100 mil habitantes
 9600;Proporção de governos locais que adotam e implementam estratégias locais de redução de risco de desastres em linha com as estratégias nacionais de redução de risco de desastres
-9601;Índice de paridade de frequência à escola das pessoas de 5 anos de idade, por sexo (mulher/homem)
-9603;Índice de paridade de frequência à escola das pessoas de 5 anos de idade, por situação do domicílio (rural/urbano)
 9605;Número de escolas dos anos iniciais do ensino fundamental
 9606;Número de escolas dos anos finais do ensino fundamental
 9607;Número de escolas de ensino médio
+9608;Docentes
+9609;Docentes com formação adequada
 9610;Proporção de docentes com formação adequada
 9613;Número de casos novos de hepatite B
 9617;Proporção da população abaixo da linha de pobreza internacional
@@ -41,7 +46,7 @@ CODG_VAR;DESC_VAR
 9727;Número de assentos na Câmara de Vereadores
 9728;Número de assentos ocupados por mulheres na Câmara de Vereadores
 9729;Proporção de assentos ocupados por mulheres na Câmara de Vereadores
-9730;Razão de morte materna
+9730;Razão de mortalidade materna
 9731;Taxa de mortalidade em menores de 5 anos
 9732;Taxa de mortalidade neonatal
 9733;Incidência de tuberculose por 100 mil habitantes
@@ -73,12 +78,14 @@ CODG_VAR;DESC_VAR
 12360;Prevalência do consumo atual de tabaco na população de 15 anos ou mais, considerando um intervalo de confiança de 95% - limite inferior
 12361;Prevalência do consumo atual de tabaco na população de 15 anos ou mais, considerando um intervalo de confiança de 95% - limite superior
 12382;Prevalência do consumo atual de tabaco na população de 15 anos ou mais
+12735;Proporção de águas residuais domésticas tratadas de forma segura
 12737;Número de casos novos de tuberculose
-12746;Índice de paridade de frequência à escola das pessoas de 5 anos de idade, rendimento domiciliar per capita (até 20%/mais de 80%)
 12763;Taxa de incidência da malária por 1.000 habitantes
 12764;Número de casos autóctones de malária
 12769;Variação proporcional da extensão dos ecossistemas relacionados à água
 12770;Variação da extensão dos ecossistemas relacionados à água
-12771;Eficiência do uso de água, em moeda estrangeira
 12772;Número de pessoas que necessitam de intervenção contra doenças tropicais negligenciadas (DTN)
 12948;Número de óbitos atribuídos a doenças cardiovasculares, câncer, diabetes ou doenças respiratórias crônicas na população de 30 a 69 anos
+13430;Cobertura de óbitos
+13532;Taxa de vítimas de homicídios intencionais
+13533;Vítimas de homicídios intencionais

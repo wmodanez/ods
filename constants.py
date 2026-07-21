@@ -4,8 +4,8 @@
 LIST_INDICADORES = {
     'Objetivo 1': {
         'Meta 1.1': {
-            'Indicador 1.1.1': '/t/5817/n3/11,21,17,51,52,53,50/v/all/p/last%205/d/v9617%201',
-            'Indicador 1.1.1.a': '/t/5840/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9618%201'
+            'Indicador 1.1.1a': '/t/5817/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9617%201',
+            'Indicador 1.1.1c': '/t/5840/n3/11,21,17,51,52,53,50/v/9618/p/all/d/v9618%201'
         },
         'Meta 1.2': {
             'Indicador 1.2.1': '/t/5877/n1/all/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9948%201',
@@ -35,7 +35,7 @@ LIST_INDICADORES = {
             'Indicador 3.4.1': '/t/4277/n3/11,21,17,51,52,53,50/v/11754,12948/p/last%205/c2/all/c58/all/d/v11754%202',
             'Indicador 3.4.2': '/t/8183/n3/11,21,17,51,52,53,50/v/11704/p/all/c2/all/c58/all/d/v11704%201'
         },
-        'Meta3.6': {
+        'Meta 3.6': {
             'Indicador 3.6.1': '/t/4408/n3/11,21,17,51,52,53,50/v/9734,11728/p/last%205/c2/all/c58/all/d/v9734%201'
         },
         'Meta 3.7': {
@@ -43,7 +43,7 @@ LIST_INDICADORES = {
         },
         'Meta 3.9': {
             'Indicador 3.9.2': '/t/8191/n3/11,21,17,51,52,53,50/v/9737,11725/p/last%205/c2/all/c58/all/d/v9737%201',
-            'Indicador 3.9.3': '/t/8192//n3/11,21,17,51,52,53,50/v/11726/p/all/c2/all/c58/all/d/v11726%202'
+            'Indicador 3.9.3': '/t/8192/n3/11,21,17,51,52,53,50/v/11726/p/all/c2/all/c58/all/d/v11726%202'
         },
         'Meta 3.a': {
             'Indicador 3.a.1': '/t/8416/n3/11,21,17,51,52,53,50/v/all/p/all/c2/all/d/v12360%201,v12361%201,v12382%201'
@@ -54,16 +54,21 @@ LIST_INDICADORES = {
             'Indicador 4.1.2': '/t/4731/n3/11,21,17,51,52,53,50/v/4721/p/all/c582/all/d/v4721%201'
         },
         'Meta 4.2': {
-            'Indicador 4.2.2': '/t/4734/n3/11,21,17,51,52,53,50/v/4775,4796/p/all/c2/all/d/v4796%201'
+            'Indicador 4.2.2': '/t/4734/n3/11,21,17,51,52,53,50/v/4775,4796/p/all/c2/all/d/v4796%201',
+            'Indicador 4.2.1.3': '/t/4734/n3/11,21,17,51,52,53,50/v/4775,4796/p/all/c2/all/d/v4796%201'
         },
         'Meta 4.5': {
-            'Indicador 4.5.1': '/t/6674/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9601%202,v9603%202,v12746%202'
+            'Indicador 4.5.1a': '/t/4735/n3/all/v/all/p/all/c582/all/c1712/all/d/v4826%202,v4940%201',
+            'Indicador 4.5.1b': '/t/4736/n3/all/v/all/p/all/c1712/all/d/v4941%202,v4956%201',
+        },
+        'Meta 4.6': {
+            'Indicador 4.6.1': '/t/10436/n3/11,21,17,51,52,53,50/v/2513/p/all/c58/all/d/v2513%202'
         },
         'Meta 4.a': {
             'Indicador 4.a.1': '/t/7783/n3/11,21,17,51,52,53,50/v/all/p/last%205/c812/all/d/v11084%201,v11085%201,v11086%201'
         },
         'Meta 4.c': {
-            'Indicador 4.c.1': '/t/7981/n3/11,21,17,51,52,53,50/v/all/p/all/c813/all/d/v9610%201'
+            'Indicador 4.c.1': '/t/6676/n3/all/v/all/p/all/c2/all/c813/all/d/v9610%201'
         }
     },
     'Objetivo 5': {
@@ -75,9 +80,6 @@ LIST_INDICADORES = {
         'Meta 5.5': {
             'Indicador 5.5.1': '/t/6692/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9726%201',
             'Indicador 5.5.1.1': '/t/6693/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9729%201'
-        },
-        'Meta 5.b': {
-            'Indicador 5.b.1': '/t/6863/n2/all/v/5039/p/all/c2/all/c1/6795/d/v5039%201',
         }
     },
     'Objetivo 6': {
@@ -87,8 +89,11 @@ LIST_INDICADORES = {
         'Meta 6.2': {
             'Indicador 6.2.1': '/t/6835/n3/11,21,17,51,52,53,50/v/all/p/all/d/v10107%201'
         },
+        'Meta 6.3': {
+            'Indicador 6.3.1': '/t/8916/n3/11,21,17,51,52,53,50/v/12735/p/all/d/v12735%202'
+        },
         'Meta 6.4': {
-            'Indicador 6.4.1': '/t/6968/n3/11,21,17,51,52,53,50/v/all/p/all/c4/all/d/v10564%202,v12771%202'
+            'Indicador 6.4.1': '/t/6968/n3/11,21,17,51,52,53,50/v/all/p/all/c4/all/d/v10564%202'
         },
         'Meta 6.6': {
             'Indicador 6.6.1': '/t/9042/n3/11,21,17,51,52,53,50/v/all/p/all/c1499/all/c1500/all/d/v12769%201,v12770%201'
@@ -128,28 +133,10 @@ LIST_INDICADORES = {
             'Indicador 9.b.1': '/t/6609/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9315%201'
         }
     },
-    'Objetivo 10': {
-        'Meta 10.1': {
-            'Indicador 10.1.1': '/t/4755/v/4957,4965/p/all/d/v4957%202,v4965%202'
-        },
-        'Meta 10.2': {
-            'Indicador 10.2.1': '/t/4758/v/4969,4971/p/all/c2/all/d/v4971%201',
-            'Indicador 10.2.2': '/t/4760/v/4969,4971/p/all/c58/all/d/v4971%201'
-        },
-        'Meta 10.4': {
-            'Indicador 10.4.1': '/t/6614/v/all/p/all/d/v9320%201'
-        },
-        'Meta 10.5': {
-            'Indicador 10.5.1.a': '/t/7716/v/all/p/all/c1020/all/d/v11025%202',
-            'Indicador 10.5.1.b': '/t/7717/v/all/p/all/c1020/all/d/v11026%202',
-            'Indicador 10.5.1.c': '/t/7718/v/all/p/all/c1405/all/d/v11027%202',
-            'Indicador 10.5.1.d': '/t/7719/v/all/p/all/c1405/all/d/v11028%202',
-            'Indicador 10.5.1.e': '/t/7732/v/all/p/all/c1020/all/d/v11029%202',
-            'Indicador 10.5.1.f': '/t/7733/v/all/p/all/c1405/all/d/v11030%202',
-            'Indicador 10.5.1.g': '/t/7734/v/all/p/all/c1405/all/d/v11031%202'
-        }
-    },
     'Objetivo 11': {
+        'Meta 11.1': {
+            'Indicador 11.1.1': '/t/6585/n3/11,21,17,51,52,53,50/v/9326/p/all/d/v9326%202'
+        },
         'Meta 11.3': {
             'Indicador 11.3.2': '/t/7520/n3/11,21,17,51,52,53,50/v/all/p/all/d/v10823%201'
         },
@@ -160,65 +147,18 @@ LIST_INDICADORES = {
             'Indicador 11.b.2': '/t/6673/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9600%201'
         }
     },
-    'Objetivo 12': {
-        'Meta 12.1': {
-            'Indicador 12.1.1': '/t/6690/v/all/p/all'
-        },
-        'Meta 12.4': {
-            'Indicador 12.4.1': '/t/6815/v/all/p/all'
-        },
-        'Meta 12.5': {
-            'Indicador 12.5.1': '/t/8904/n2/all/v/all/p/all/d/v9275%202,v9276%202,v9277%202,v9278%202,v9279%202,v9280%202,v9281%202,v9282%202,v12660%202,v12661%202,v12663%202,v12664%202',
-        },
-        'Meta 12.6': {
-            'Indicador 12.6.1': '/t/7516/n2/all/v/all/p/all/d/v10301%202',
-            'Indicador 12.6.1.2': '/t/7517/v/all/p/all/c319/all/d/v10301%202',
-            'Indicador 12.6.1.3': '/t/7518/v/all/p/all/c696/all/d/v10301%202'
-        },
-        'Meta 12.a': {
-            'Indicador 12.a.1': '/t/7283/v/all/p/all/d/v10527%202'
-        }
-    },
     'Objetivo 13': {
         'Meta 13.1': {
             'Indicador 13.1.1': '/t/6689/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9619%201',
             'Indicador 13.1.3': '/t/6673/n3/11,21,17,51,52,53,50/v/all/p/all/d/v9600%201'
         }
     },
-    'Objetivo 14': {
-        'Meta 14.5': {
-            'Indicador 14.5.1': '/t/6688/v/all/p/all/d/v6312%201'
-        },
-        'Meta 14.6': {
-            'Indicador 14.6.1': '/t/9033/v/all/p/all/d/v12736%202'
-        },
-        'Meta 14.b': {
-            'Indicador 14.b.1': '/t/8752/v/all/p/all/d/v12734%202'
-        }
-    },
-    'Objetivo 15': {
-        'Meta 15.1': {
-            'Indicador 15.1.1': '/t/6843/v/all/p/all/d/v9971%202',
-            'Indicador 15.1.2': '/t/4962/n123/all/v/all/p/all/d/v9272%201',
-            'Indicador C15.1.c': '/t/6746/n123/1/v/all/p/all/d/v9902%201'
-        },
-        'Meta 15.2': {
-            'Indicador 15.2.1': '/t/9774/v/all/p/all/d/v9454%202,v9455%202,v9456%202,v9457%202,v9458%202'
-        },
-        'Meta 15.4': {
-            'Indicador 15.4.1': '/t/6729/n123/1/v/all/p/all/d/v9899%201',
-            'Indicador 15.4.2': '/t/6744/v/all/p/all/d/v10001%202'
-        },
-        'Meta 15.6': {
-            'Indicador 15.6.1': '/t/6748/v/all/p/all'
-        }
-    },
     'Objetivo 16': {
         'Meta 16.1': {
-            'Indicador 16.1.1': '/t/6606/n3/11,21,17,51,52,53,50/v/all/p/last%205/d/v9502%202',
-            'Indicador 16.1.1.2': '/t/7877/n3/11,21,17,51,52,53,50/v/all/p/last%205/c58/all/d/v9502%202',
-            'Indicador 16.1.1.3': '/t/7876/n3/11,21,17,51,52,53,50/v/all/p/last%205/c2/all/c58/all/d/v9502%202',
-            'Indicador 16.1.1.4': '/t/7875/n3/11,21,17,51,52,53,50/v/all/p/last%205/c2/all/d/v9502%202'
+            'Indicador 16.1.1': '/t/6606/n3/11,21,17,51,52,53,50/v/all/p/last%205/d/v13532%202',
+            'Indicador 16.1.1.2': '/t/7877/n3/11,21,17,51,52,53,50/v/all/p/last%205/c58/all/d/v13532%202',
+            'Indicador 16.1.1.3': '/t/7876/n3/11,21,17,51,52,53,50/v/all/p/last%205/c2/all/c58/all/d/v13532%202',
+            'Indicador 16.1.1.4': '/t/7875/n3/11,21,17,51,52,53,50/v/all/p/last%205/c2/all/d/v13532%202'
         },
         'Meta 16.1.3': {
             'Indicador 16.1.3': '/t/8022/n3/11,21,17,51,52,53,50/v/11392,11393,11394/p/all/c2/all/c1/6795/d/v11392%203,v11393%203,v11394%203',
@@ -232,21 +172,8 @@ LIST_INDICADORES = {
         }
     },
     'Objetivo 17': {
-        'Meta 17.1': {
-            'Indicador 17.1.1': '/t/7223/v/all/p/all/d/v10414%201',
-            'Indicador 17.1.2': '/t/6595/v/all/p/all/d/v9341%201'
-        },
-        'Meta 17.3': {
-            'Indicador 17.3.2': '/t/6596/v/all/p/all/d/v9342%202'
-        },
-        'Meta 17.4': {
-            'Indicador 17.4.1': '/t/6597/v/all/p/all/d/v9343%202'
-        },
-        'Meta 17.6': {
-            'Indicador 17.6.1': '/t/6816/v/all/p/all/c823/all/c1020/all/d/v9817%202'
-        },
-        'Meta 17.8': {
-            'Indicador 17.8.1': '/t/4752/n2/all/v/2620,5000/p/all/c1/all/c2/all/d/v5000%201'
+        'Meta 17.19.2': {
+            'Indicador 17.19.2': '/t/10389/n3/all/v/13430/p/all/d/v13430%202'
         }
     }
 }
@@ -294,6 +221,8 @@ LIST_COLUNAS = {
     'Situação do domicílio': 'DESC_SIT_DOM',
     'Brasil e Grande Região (Código)': 'CODG_REGIAO',
     'Brasil e Grande Região': 'DESC_REGIAO',
+    'Grande Região (Código)': 'CODG_REGIAO',
+    'Grande Região': 'DESC_REGIAO',
     'Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita (Código)': 'CODG_CLAS_PERC_REND_DOM_PER_CAP',
     'Classes de percentual das pessoas em ordem crescente de rendimento domiciliar per capita': 'DESC_CLAS_PERC_REND_DOM_PER_CAP',
     'Infraestrutura das escolas (Código)': 'CODG_INF_ESC',
@@ -314,6 +243,8 @@ LIST_COLUNAS = {
     'Atividades da indústria, do setor de eletricidade e gás e dos serviços selecionados': 'DESC_ATV_IND_SET_IND',
     'Tipo de cobertura da telefonia móvel (Código)': 'CODG_TIP_COB_TEF_MOV',
     'Tipo de cobertura da telefonia móvel': 'DESC_TIP_COB_TEF_MOV',
+    'Tipo de índice de paridade (Código)': 'CODG_TIP_IND_PARIDADE',
+    'Tipo de índice de paridade': 'DESC_TIP_IND_PARIDADE',
     'Meses do ano (Código)': 'CODG_MES_ANO',
     'Meses do ano': 'DESC_MES_ANO',
     'Trimestres do ano (Código)': 'CODG_TRI_ANO',

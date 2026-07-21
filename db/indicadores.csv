@@ -1,6 +1,6 @@
 ID_INDICADOR;DESC_INDICADOR;ID_META;RBC;VARIAVEIS;GRAFICO_LINHA;RANKING_ORDEM
-Indicador 1.1.1;Proporção da população vivendo abaixo da linha de pobreza internacional, por sexo, idade, condição perante o trabalho e localização geográfica (urbano/rural);Meta 1.1;1;0;0;1
-Indicador 1.1.1.a;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza internacional;Meta 1.1;1;0;0;1
+Indicador 1.1.1a;Proporção da população vivendo abaixo da linha de pobreza internacional;Meta 1.1;1;0;0;1
+Indicador 1.1.1c;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza internacional;Meta 1.1;1;0;0;1
 Indicador 1.2.1;Proporção da população vivendo abaixo da linha de pobreza nacional, por sexo, idade, condição perante o trabalho e localização geográfica (urbano/rural);Meta 1.2;1;0;0;1
 Indicador 1.2.1.a;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza nacional;Meta 1.2;1;0;0;1
 Indicador 1.5.1;Número de mortes, pessoas desaparecidas e pessoas diretamente afetadas atribuído a desastres por 100 mil habitantes;Meta 1.5;1;0;0;1
@@ -21,14 +21,12 @@ Indicador 3.9.2;Taxa de mortalidade atribuída a fontes de água inseguras, sane
 Indicador 3.9.3;Taxa de mortalidade atribuída a intoxicação não intencional;Meta 3.9;1;1;1;1
 Indicador 3.a.1;Prevalência do consumo atual de tabaco na população de 15 anos ou mais;Meta 3.a;1;1;0;1
 Indicador 4.1.2;Taxa de conclusão do ensino fundamental e ensino médio;Meta 4.1;1;0;0;0
-Indicador 4.2.1;Proporção de crianças com idade entre 24-59 meses que estão com desenvolvimento adequado da saúde, aprendizagem e bem-estar psicossocial, por sexo;Meta 4.2;1;0;1;0
-Indicador 4.2.1.2;Proporção das pessoas de 5 anos de idade que frequentam escola de acordo com a situação do domicílio;Meta 4.2;1;0;1;0
-Indicador 4.2.1.3;Proporção das pessoas de 5 anos de idade que frequentam escola em relação ao sexo;Meta 4.2;1;0;1;0
-Indicador 4.2.1.4;Proporção das pessoas de 5 anos de idade que frequentam escola, em relação ao percentual das pessoas em ordem crescente de rendimento domiciliar per capita;Meta 4.2;1;0;1;0
+Indicador 4.2.1.3;Proporção das pessoas de 5 anos de idade que frequentam escola em relação ao sexo;Meta 4.2;1;1;1;0
 Indicador 4.2.2;Taxa de participação no ensino organizado (um ano antes da idade oficial de ingresso no ensino fundamental), por sexo;Meta 4.2;1;1;0;0
-Indicador 4.5.1;Índices de paridade (mulher/homem, rural/urbano, 1º/5º quintis de renda e outros como população com deficiência, populações indígenas e populações afetadas por conflitos, à medida que os dados estejam disponíveis) para todos os indicadores nesta lista que possam ser desagregados;Meta 4.5;1;1;0;1
+Indicador 4.5.1a;Índices de paridade das taxas de conclusão de nível de ensino, por tipo de índice de paridade e grupos de idade e nível de ensino;Meta 4.5;1;1;0;1
+Indicador 4.5.1b;Índices de paridade da taxa de participação das pessoas de 5 anos de idade no ensino organizado, por tipo de índice de paridade;Meta 4.5;1;1;0;1
 Indicador 4.a.1;"Proporção de escolas com acesso a: (a) eletricidade; (b) internet para fins pedagógicos; (c) computadores para fins pedagógicos; (d) infraestrutura e materiais adaptados para alunos com deficiência; (e) água potável; (f) instalações sanitárias separadas por sexo; e (g) instalações básicas para lavagem das mãos (de acordo com as definições dos indicadores WASH)";Meta 4.a;1;1;1;0
-Indicador 4.c.1;Proporção de professores que receberam a qualificação mínima exigida, por nível de ensino;Meta 4.c;1;0;0;0
+Indicador 4.c.1;Proporção de professores que receberam a qualificação mínima exigida, por nível de ensino;Meta 4.c;1;1;0;0
 Indicador 5.4.1;Proporção de tempo gasto em trabalho doméstico não remunerado e cuidados, por sexo, idade e localização;Meta 5.4;1;0;0;1
 Indicador 5.4.1.2;Percentual de tempo gasto em trabalho doméstico não remunerado e cuidados por sexo e raça;Meta 5.4;1;0;0;1
 Indicador 5.4.1.3;Percentual de tempo gasto em trabalho doméstico não remunerado e cuidados;Meta 5.4;1;0;0;1
@@ -59,13 +57,17 @@ Indicador 11.5.1;Número de mortes, pessoas desaparecidas e pessoas diretamente 
 Indicador 11.b.2;Proporção de governos locais que adotam e implementam estratégias locais de redução de risco de desastres em linha com as estratégias nacionais de redução de risco de desastres;Meta 11.b;1;0;0;0
 Indicador 13.1.1;Número de mortes, pessoas desaparecidas e pessoas diretamente afetadas atribuído a desastres por 100 mil habitantes;Meta 13.1;1;0;0;1
 Indicador 13.1.3;Proporção de governos locais que adotam e implementam estratégias locais de redução de risco de desastres em linha com as estratégias nacionais de redução de risco de desastres;Meta 13.1;1;0;0;0
-Indicador 16.1.1;Número de vítimas de homicídios intencionais por 100 mil habitantes, por ano;Meta 16.1;1;0;0;1
-Indicador 16.1.1.2;Número de vítimas de homicídios intencionais por 100 mil habitantes, por grupo de idade;Meta 16.1;1;0;0;1
-Indicador 16.1.1.3;Número de vítimas de homicídios intencionais por 100 mil habitantes, por sexo e grupo de idade;Meta 16.1;1;0;0;1
-Indicador 16.1.1.4;Número de vítimas de homicídios intencionais por 100 mil habitantes, por sexo;Meta 16.1;1;0;0;1
+Indicador 16.1.1;Número de vítimas de homicídios intencionais por 100 mil habitantes, por ano;Meta 16.1;1;1;0;1
+Indicador 16.1.1.2;Número de vítimas de homicídios intencionais por 100 mil habitantes, por grupo de idade;Meta 16.1;1;1;0;1
+Indicador 16.1.1.3;Número de vítimas de homicídios intencionais por 100 mil habitantes, por sexo e grupo de idade;Meta 16.1;1;1;0;1
+Indicador 16.1.1.4;Número de vítimas de homicídios intencionais por 100 mil habitantes, por sexo;Meta 16.1;1;1;0;1
 Indicador 16.1.3;Pessoas de 18 anos ou mais de idade que sofreram violência nos últimos 12 meses, por sexo e situação de domicílio;Meta 16.1;1;1;0;1
 Indicador 16.1.3.1;Pessoas de 18 anos ou mais de idade que sofreram violência nos últimos 12 meses, por grupo de idade e situação de domicílio;Meta 16.1;1;1;0;1
 Indicador 16.1.3.2;Pessoas de 18 anos ou mais de idade que sofreram violência nos últimos 12 meses, por nível de instrução e situação de domicílio;Meta 16.1;1;1;0;1
 Indicador 16.1.3.3;Pessoas de 18 anos ou mais de idade que sofreram violência nos últimos 12 meses, por cor ou raça e situação de domicílio;Meta 16.1;1;1;0;1
 Indicador 16.1.3.4;Pessoas de 18 anos ou mais de idade que sofreram violência nos últimos 12 meses, por rendimento mensal domiciliar per capita e situação de domicílio;Meta 16.1;1;1;0;1
 Indicador 16.9.1;Proporção de crianças com menos de 5 anos cujos nascimentos foram registrados por uma autoridade civil, por idade;Meta 16.9;1;1;0;0
+Indicador 4.6.1;Taxa de Alfabetização de Jovens/Adultos;Meta 4.6;1;1;1;1
+Indicador 6.3.1;Proporção do fluxo de águas residuais doméstica e industrial tratadas de forma segura;Meta 6.3;1;0;1;0
+Indicador 11.1.1;Proporção de população urbana vivendo em assentamentos precários, assentamentos informais ou domicílios inadequados;Meta 11.1;1;0;0;1
+Indicador 17.19.2;Proporção de países com sistemas estatísticos que atingem limites de relevância para cobertura de nascimentos e mortes;Meta 17.19;1;0;1;0

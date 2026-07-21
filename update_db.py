@@ -1,4 +1,6 @@
+import argparse
 import json.decoder
+from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
 import time
@@ -14,13 +16,23 @@ import pandas as pd
 import numpy as np
 
 from constants import LIST_INDICADORES, LIST_COLUNAS
+from check_indicadores_ibge import (
+    carregar_constants_indicadores,
+    carregar_indicadores_site,
+    numero_para_ids_csv,
+    obter_tabelas_indicador,
+    tem_dado_estadual,
+)
 
 # Configuração de logging com FileHandler
+# Nome com timestamp para diferenciar cada execução (mesma convenção usada em app.py)
 log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-log_file = Path(__file__).parent / 'update_db.log'
+log_dir = Path(__file__).parent / 'logs'
+log_dir.mkdir(parents=True, exist_ok=True)
+log_file = log_dir / datetime.now().strftime('update_db_log_%Y-%m-%d_%H-%M-%S.log')
 
 # Handler para o arquivo
-file_handler = logging.handlers.RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=2, encoding='utf-8') # 5MB por arquivo, mantém 2 backups
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
 file_handler.setFormatter(log_formatter)
 
 # Handler para o console
@@ -355,8 +367,76 @@ async def process_indicadores(filtered_list_indicadores, url_base, list_colunas,
     else:
         logging.info("Todos os indicadores foram processados sem falhas aparentes.")
 
+    # 5. Remove parquets obsoletos: compara os arquivos existentes contra o
+    #    mapeamento ATUAL de constants.py (nao contra o resultado desta execucao),
+    #    entao um indicador que so falhou nesta rodada mantem seu parquet antigo
+    #    como fallback, mas um indicador renomeado/desativado tem seu arquivo
+    #    obsoleto removido (e assim deixa de ser versionado no git).
+    esperados = {
+        f"{indicador.lower().replace(' ', '')}.parquet"
+        for metas_objetivo in filtered_list_indicadores.values()
+        for indicadores_meta in metas_objetivo.values()
+        for indicador in indicadores_meta.keys()
+    }
+    existentes = {p.name: p for p in results_dir.glob('*.parquet')}
+    orfaos = set(existentes) - esperados
+    if orfaos:
+        logging.info(f"Removendo {len(orfaos)} arquivo(s) parquet obsoleto(s) (indicador nao mapeado atualmente)...")
+        for nome in sorted(orfaos):
+            try:
+                existentes[nome].unlink()
+                logging.info(f"  removido: {nome}")
+            except Exception as e:
+                logging.error(f"  falha ao remover {nome}: {e}")
+    else:
+        logging.info("Nenhum arquivo parquet obsoleto encontrado.")
 
-async def main() -> None:
+
+def verificar_indicadores_sem_url(indicadores_ids: List[str]) -> List[str]:
+    """Checagem local (sem rede): indicadores RBC=1 que nao tem URL em
+    constants.py e que portanto seriam silenciosamente ignorados por
+    filter_indicadores. Roda sempre, pois e instantanea."""
+    mapeados_constants = carregar_constants_indicadores()
+    return [i for i in indicadores_ids if i not in mapeados_constants]
+
+
+def verificar_novidades_no_site() -> List[Tuple[str, dict]]:
+    """Checagem online (18 requisicoes a odsbrasil.gov.br, mais 2 por
+    candidato): indicadores com status 'Produzido' no site que ainda nao tem
+    nenhuma linha em indicadores.csv E que possuem dado a nivel de Unidade
+    Federativa (UF) -- unico nivel territorial que interessa para a
+    aplicacao, que so exibe os estados ja listados (RO, MA, TO, MT, MS, GO,
+    DF). Indicadores so-nacionais (sem UF) sao descartados aqui. So roda se
+    --verificar-site for passado, pois depende de um servico de terceiro e
+    nao deve travar a atualizacao de producao."""
+    todos_ids = set(load_indicadores()['ID_INDICADOR'].tolist())
+    inventario_site = carregar_indicadores_site(list(range(1, 19)))
+    candidatos = [
+        (numero, info) for numero, info in sorted(inventario_site.items())
+        if info['status'] == 'Produzido' and not numero_para_ids_csv(numero, todos_ids)
+    ]
+
+    relevantes = []
+    ignorados_sem_uf = 0
+    for numero, info in candidatos:
+        try:
+            descritivos = obter_tabelas_indicador(info['objetivo'], numero)
+        except Exception as e:
+            logging.debug(f"Falha ao checar nivel territorial de {numero}: {e}")
+            continue
+        if tem_dado_estadual(descritivos):
+            relevantes.append((numero, info))
+        else:
+            ignorados_sem_uf += 1
+
+    if ignorados_sem_uf:
+        logging.info(
+            f"{ignorados_sem_uf} indicador(es) novo(s) no site ignorado(s) por nao terem dado a nivel de UF."
+        )
+    return relevantes
+
+
+async def main(verificar_site: bool = False) -> None:
     logging.info("Iniciando atualização da base de dados...")
     url_base = 'https://apisidra.ibge.gov.br/values'
     db_path = Path(__file__).parent / 'db'
@@ -385,11 +465,42 @@ async def main() -> None:
         logging.exception("Erro crítico ao carregar db/indicadores.csv. Abortando.")
         return
 
+    # Checagem de consistencia entre indicadores.csv e constants.py: sem isso,
+    # um indicador RBC=1 sem URL mapeada era descartado sem nenhum aviso.
+    sem_url = verificar_indicadores_sem_url(indicadores_ids)
+    if sem_url:
+        logging.warning(
+            f"{len(sem_url)} indicador(es) com RBC=1 NAO possuem URL em constants.py e "
+            f"serao IGNORADOS nesta atualização: {', '.join(sem_url)}"
+        )
+        logging.warning(
+            "Rode 'python check_indicadores_ibge.py --detail' para investigar as tabelas SIDRA candidatas."
+        )
+
+    if verificar_site:
+        logging.info("Verificando novidades em odsbrasil.gov.br (checagem opcional, pode levar ~1 min)...")
+        try:
+            novos = verificar_novidades_no_site()
+            if novos:
+                logging.warning(f"{len(novos)} indicador(es) 'Produzido' no site ainda nao constam em indicadores.csv:")
+                for numero, info in novos:
+                    logging.warning(f"  - {numero} (Objetivo {info['objetivo']}, Meta {info['meta']}): {info['nome']}")
+            else:
+                logging.info("Nenhuma novidade encontrada no site além do que já está em indicadores.csv.")
+        except Exception as e:
+            logging.warning(f"Não foi possível verificar novidades em odsbrasil.gov.br: {e}")
+
     filtered_list_indicadores = filter_indicadores(LIST_INDICADORES, indicadores_ids)
 
     # Passa o mapeamento e o df_variavel inicial para a função de processamento
     await process_indicadores(filtered_list_indicadores, url_base, LIST_COLUNAS,
                            df_und_med, df_variavel, df_indicadores)
+
+    if sem_url:
+        logging.warning(
+            f"Lembrete: {len(sem_url)} indicador(es) RBC=1 continuam sem URL em constants.py "
+            f"e não foram atualizados nesta execução: {', '.join(sem_url)}"
+        )
 
     logging.info("Atualização da base de dados concluída.")
 
@@ -402,7 +513,15 @@ if __name__ == '__main__':
         logging.error("A biblioteca aiohttp não está instalada. Execute: pip install aiohttp")
         exit(1) # Sai se a dependência crucial estiver faltando
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--verificar-site', action='store_true',
+        help='Alem da checagem local, consulta odsbrasil.gov.br em busca de indicadores '
+             'novos ainda nao presentes em indicadores.csv (mais lento, depende de terceiro).'
+    )
+    args = parser.parse_args()
+
     start_time = time.time()
-    asyncio.run(main())
+    asyncio.run(main(verificar_site=args.verificar_site))
     end_time = time.time()
     logging.info(f"Tempo total de execução: {end_time - start_time:.2f} segundos")
