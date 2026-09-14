@@ -1,3 +1,8 @@
+# Dados gerados por update_db.py (fonte de verdade agora é a PVC em
+# produção, atualizada pelo CronJob painel-ods-update-db; ver k8s/seed-job.yaml
+# para recriação em disaster recovery, que também busca da API do IBGE).
+db/resultados/*.parquet
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
