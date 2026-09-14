@@ -6,8 +6,14 @@ metadata:
   labels:
     app: painel-ods
 spec:
+  # ReadWriteOnce: única opção viável neste cluster. A StorageClass "thin-csi"
+  # (csi.vsphere.vmware.com, confirmado via "oc get storageclass") é disco em
+  # bloco e não suporta ReadWriteMany. RWO no Kubernetes restringe o volume a
+  # um único NÓ, não a um único pod — o Deployment e o CronJob de atualização
+  # (k8s/cronjob-update-db.yaml) montam a mesma PVC simultaneamente porque o
+  # CronJob usa podAffinity para ser agendado sempre no mesmo nó do app.
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi 
+      storage: 20Gi

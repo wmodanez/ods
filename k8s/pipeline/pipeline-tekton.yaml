@@ -79,6 +79,9 @@ spec:
             # Esperar o deployment ficar pronto (opcional, mas recomendado)
             # oc rollout status deployment/painel-ods -n $(params.namespace) --timeout=5m
 
+            echo "Aplicando CronJob de atualização dos dados..."
+            oc apply -n $(params.namespace) -f ${MANIFEST_PATH}/cronjob-update-db.yaml
+
             echo "Aplicando Service..."
             oc apply -n $(params.namespace) -f ${MANIFEST_PATH}/service.yaml
 

@@ -388,6 +388,30 @@ oc start-build painel-ods --follow
 oc apply -f k8s/
 ```
 
+### Atualização dos Dados (SIDRA/IBGE)
+
+Os dados são atualizados por um `CronJob` (`k8s/cronjob-update-db.yaml`) que roda `python update_db.py` direto na PVC `painel-ods-data`, escrevendo no mesmo volume que o Deployment usa. Isso substitui o fluxo antigo (atualizar localmente, commitar os `.parquet` e refazer build+deploy) — agora a atualização acontece dentro do cluster, sem rebuild de imagem.
+
+A PVC do cluster de produção (namespace `colocation-imb`) usa a StorageClass `thin-csi` (vSphere CSI, disco em bloco), que só suporta `ReadWriteOnce` — não há `ReadWriteMany` disponível (confirmado com `oc get storageclass`). Por isso o CronJob usa `podAffinity` (`k8s/cronjob-update-db.yaml`) para ser agendado sempre no mesmo nó do pod da aplicação: `ReadWriteOnce` restringe o volume a um nó, não a um pod, então dois pods no mesmo nó podem montá-lo em RW ao mesmo tempo.
+
+**Aplicar a mudança (a PVC existente já está populada, não precisa ser recriada):**
+
+```bash
+# Remove o initContainer que sobrescrevia /app/db a cada restart do pod
+oc apply -f k8s/deployment.yaml -n colocation-imb
+
+# Cria o CronJob de atualização periódica
+oc apply -f k8s/cronjob-update-db.yaml -n colocation-imb
+```
+
+Por padrão roda semanalmente (segunda-feira, 06:00 — ajuste `spec.schedule` em `k8s/cronjob-update-db.yaml` conforme a frequência real de publicação dos indicadores no SIDRA). Para forçar uma atualização manual sem esperar o schedule:
+
+```bash
+oc create job --from=cronjob/painel-ods-update-db painel-ods-update-db-manual -n colocation-imb
+```
+
+Se a PVC precisar ser recriada do zero no futuro (perda de dados, novo ambiente), use `k8s/seed-job.yaml` para repovoá-la com o conteúdo estático baked na imagem antes de subir o Deployment — veja os comentários no próprio arquivo.
+
 ## 🧪 Testes
 
 ### Executando Testes

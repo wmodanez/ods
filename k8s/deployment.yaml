@@ -23,23 +23,6 @@ spec:
         runAsUser: 1001070000
         seccompProfile:
           type: RuntimeDefault
-      initContainers:
-      - name: init-db
-        image: quay.apps.dc1openshiftadm.cloud.go.gov.br/dc1openshiftprod_colocation-imb/painel-ods:latest
-        command: ["/bin/sh", "-c"]
-        args:
-          - |
-            cp -r /app/db-init/* /app/db/
-            chmod -R g+w /app/db
-            rm -rf /app/db-init
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop: ["ALL"]
-          runAsUser: 1001070000
-        volumeMounts:
-        - name: app-data
-          mountPath: /app/db
       containers:
       - name: painel-ods
         image: quay.apps.dc1openshiftadm.cloud.go.gov.br/dc1openshiftprod_colocation-imb/painel-ods:latest

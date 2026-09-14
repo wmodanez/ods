@@ -1,0 +1,74 @@
+# Job de execução única (NÃO faz parte do pipeline automático de deploy).
+#
+# Uso: recuperação de desastre / bootstrap de um ambiente novo — só é
+# necessário se a PVC "painel-ods-data" for perdida ou recriada do zero e
+# estiver vazia. Repovoa /app/db com o conteúdo estático que veio buildado na
+# imagem (/app/db-init: objetivos.csv, metas.csv, br_geojson.json,
+# indicadores.csv, db/resultados/*.parquet etc.), que o update_db.py não gera
+# sozinho — ele só atualiza os indicadores num db/ que já existe.
+#
+# Não é necessário para a migração normal (remoção do initContainer + criação
+# do CronJob): a PVC de produção já está populada.
+#
+# É seguro reexecutar: só copia se /app/db estiver vazio, nunca sobrescreve
+# dados já atualizados pelo CronJob.
+#
+#   oc apply -f k8s/seed-job.yaml -n colocation-imb
+#   oc wait --for=condition=complete job/painel-ods-seed-data -n colocation-imb --timeout=120s
+#   oc logs job/painel-ods-seed-data -n colocation-imb
+#   oc delete job painel-ods-seed-data -n colocation-imb   # Job não é reaplicável com oc apply; delete antes de rodar de novo
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: painel-ods-seed-data
+  namespace: colocation-imb
+  labels:
+    app: painel-ods
+    component: seed-data
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      labels:
+        app: painel-ods
+        component: seed-data
+    spec:
+      restartPolicy: Never
+      securityContext:
+        fsGroup: 1001070000
+        runAsNonRoot: true
+        runAsUser: 1001070000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: seed-db
+        image: quay.apps.dc1openshiftadm.cloud.go.gov.br/dc1openshiftprod_colocation-imb/painel-ods:latest
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            if [ -z "$(ls -A /app/db 2>/dev/null)" ]; then
+              echo "PVC vazia, semeando dados iniciais a partir da imagem..."
+              cp -r /app/db-init/* /app/db/
+              echo "Seed concluído."
+            else
+              echo "PVC já contém dados, nada a fazer (use o CronJob painel-ods-update-db para atualizar)."
+            fi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+          runAsUser: 1001070000
+        resources:
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+        volumeMounts:
+        - name: app-data
+          mountPath: /app/db
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: painel-ods-data

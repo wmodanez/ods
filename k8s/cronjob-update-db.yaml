@@ -1,0 +1,75 @@
+# Atualiza os dados (db/resultados/*.parquet, unidade_medida.csv,
+# variavel.csv, indicadores.csv) direto na PVC compartilhada com o
+# Deployment, rodando update_db.py periodicamente.
+#
+# A PVC "painel-ods-data" é ReadWriteOnce (única opção na StorageClass
+# "thin-csi"/vSphere CSI deste cluster, confirmado via "oc get storageclass" —
+# não há suporte a ReadWriteMany). RWO restringe o volume a um único NÓ, não a
+# um único pod, então usamos podAffinity abaixo para garantir que o Job seja
+# agendado sempre no mesmo nó do pod do Deployment (label app=painel-ods) —
+# só assim as duas montagens RW convivem. Se o pod do app não estiver de pé
+# no momento do schedule (rollout em andamento, réplicas=0), o Job fica
+# Pending até o activeDeadlineSeconds estourar e falha essa execução; a
+# próxima execução agendada tenta de novo normalmente.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: painel-ods-update-db
+  namespace: colocation-imb
+  labels:
+    app: painel-ods
+    component: update-db
+spec:
+  # Toda segunda-feira às 06:00 (horário do cluster). Ajuste conforme a
+  # frequência real de publicação dos indicadores no SIDRA/IBGE.
+  schedule: "0 6 * * 1"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 1800
+      template:
+        metadata:
+          labels:
+            app: painel-ods
+            component: update-db
+        spec:
+          restartPolicy: OnFailure
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+              - labelSelector:
+                  matchLabels:
+                    app: painel-ods
+                topologyKey: kubernetes.io/hostname
+          securityContext:
+            fsGroup: 1001070000
+            runAsNonRoot: true
+            runAsUser: 1001070000
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+          - name: update-db
+            image: quay.apps.dc1openshiftadm.cloud.go.gov.br/dc1openshiftprod_colocation-imb/painel-ods:latest
+            command: ["python", "update_db.py"]
+            securityContext:
+              allowPrivilegeEscalation: false
+              capabilities:
+                drop: ["ALL"]
+              runAsUser: 1001070000
+            resources:
+              limits:
+                cpu: "500m"
+                memory: "1Gi"
+              requests:
+                cpu: "250m"
+                memory: "256Mi"
+            volumeMounts:
+            - name: app-data
+              mountPath: /app/db
+          volumes:
+          - name: app-data
+            persistentVolumeClaim:
+              claimName: painel-ods-data
