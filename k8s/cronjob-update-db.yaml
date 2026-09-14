@@ -20,9 +20,12 @@ metadata:
     app: painel-ods
     component: update-db
 spec:
-  # Toda segunda-feira às 06:00 (horário do cluster). Ajuste conforme a
-  # frequência real de publicação dos indicadores no SIDRA/IBGE.
+  # Toda segunda-feira às 06:00 horário de Brasília. timeZone explícito
+  # porque sem ele o CronJob usa UTC (06:00 UTC = 03:00 BRT) — comportamento
+  # padrão do controller, não intuitivo. Ajuste conforme a frequência real
+  # de publicação dos indicadores no SIDRA/IBGE.
   schedule: "0 6 * * 1"
+  timeZone: "America/Sao_Paulo"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
