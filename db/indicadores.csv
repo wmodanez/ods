@@ -1,10 +1,15 @@
 ID_INDICADOR;DESC_INDICADOR;ID_META;RBC;VARIAVEIS;GRAFICO_LINHA;RANKING_ORDEM
 Indicador 1.1.1a;Proporção da população vivendo abaixo da linha de pobreza internacional;Meta 1.1;1;0;0;1
 Indicador 1.1.1c;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza internacional;Meta 1.1;1;0;0;1
+Indicador P1.1.1a;Proporção da população abaixo da linha de pobreza regional;Meta 1.1;1;0;0;1
+Indicador P1.1.1c;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza regional;Meta 1.1;1;0;0;1
 Indicador 1.2.1;Proporção da população vivendo abaixo da linha de pobreza nacional, por sexo, idade, condição perante o trabalho e localização geográfica (urbano/rural);Meta 1.2;1;0;0;1
 Indicador 1.2.1.a;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza nacional;Meta 1.2;1;0;0;1
+Indicador 1.2.2;Proporção da população com algum grau de pobreza multidimensional e Índice de pobreza multidimensional;Meta 1.2;1;1;0;1
 Indicador 1.5.1;Número de mortes, pessoas desaparecidas e pessoas diretamente afetadas atribuído a desastres por 100 mil habitantes;Meta 1.5;1;0;0;1
 Indicador 1.5.4;Proporção de governos locais que adotam e implementam estratégias locais de redução de risco de desastres em linha com as estratégias nacionais de redução de risco de desastres;Meta 1.5;1;0;0;1
+Indicador 2.3.1;Volume de produção por unidade de trabalho por dimensão da empresa agrícola/pastoril/florestal;Meta 2.3;1;0;0;0
+Indicador 2.3.2;Renda média dos pequenos produtores de alimentos, por sexo e condição de indígena;Meta 2.3;1;0;0;0
 Indicador 3.1.1;Razão de mortalidade materna;Meta 3.1;1;1;1;1
 Indicador 3.1.2;Proporção de nascimentos assistidos por pessoal de saúde qualificado;Meta 3.1;1;1;1;0
 Indicador 3.2.1;Taxa de mortalidade em menores de 5 anos;Meta 3.2;1;1;1;1

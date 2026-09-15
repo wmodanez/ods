@@ -26,6 +26,8 @@ CODG_VAR;DESC_VAR
 9433;Número de nascidos vivos de mães adolescentes
 9435;Número de óbitos de mulheres residentes por causas e condições consideradas de morte materna
 9436;Número de nascidos vivos de mães residentes
+9452;Proporção da população com algum grau de pobreza multidimensional
+9453;Índice de pobreza multidimensional não monetário
 9462;Número de óbitos de residentes até 27 dias de vida completos
 9471;Percentual de tempo gasto em trabalho doméstico não remunerado e cuidados
 9484;Percentual da população que utiliza serviços de água potável gerenciados de forma segura
@@ -89,3 +91,7 @@ CODG_VAR;DESC_VAR
 13430;Cobertura de óbitos
 13532;Taxa de vítimas de homicídios intencionais
 13533;Vítimas de homicídios intencionais
+13605;Volume de produção por unidade de trabalho
+13606;Renda média dos produtores de alimentos
+14137;Proporção da população abaixo da linha de pobreza regional
+14138;Proporção da população ocupada de 14 anos ou mais de idade abaixo da linha de pobreza regional
